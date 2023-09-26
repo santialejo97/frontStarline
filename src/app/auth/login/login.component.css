@@ -1,0 +1,31 @@
+.login {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.login h2 {
+  margin: 0;
+}
+
+.container-login {
+  height: 80vh;
+}
+
+p {
+  text-align: center;
+}
+
+p:hover {
+  cursor: pointer;
+}
+
+.formulario {
+  width: 400px;
+  border-left: 1px solid #000008;
+  padding: 0 20px;
+}
+
+.button-login {
+  width: 100%;
+}

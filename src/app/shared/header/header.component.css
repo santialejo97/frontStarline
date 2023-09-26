@@ -1,0 +1,23 @@
+a {
+  margin-right: 15px;
+}
+
+a:last-child {
+  margin-right: 0;
+}
+
+.logo h1 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.auth-button {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: black;
+  cursor: pointer;
+}

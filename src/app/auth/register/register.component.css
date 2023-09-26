@@ -1,0 +1,31 @@
+.register {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.register h2 {
+  margin: 0;
+}
+
+.container-register {
+  height: 80vh;
+}
+
+p {
+  text-align: center;
+}
+
+p:hover {
+  cursor: pointer;
+}
+
+.formulario {
+  width: 400px;
+  border-left: 1px solid #000008;
+  padding: 0 20px;
+}
+
+.button-register {
+  width: 100%;
+}
