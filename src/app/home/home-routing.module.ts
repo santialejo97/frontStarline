@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { FeatureComponent } from './pages/feature/feature.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AboutUsComponent } from './pages/service/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AdminComponent } from './pages/admin/admin.component';
 
@@ -16,7 +16,7 @@ const routes: Routes = [
     component: FeatureComponent,
   },
   {
-    path: 'aboutUs',
+    path: 'service/:id',
     component: AboutUsComponent,
   },
   {

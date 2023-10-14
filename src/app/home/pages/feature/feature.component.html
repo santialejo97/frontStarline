@@ -1,3 +1,5 @@
-<div class="row mt-5">
-  <app-card></app-card>
-</div>
+<section class="row">
+  <div class="col mt-5" *ngFor="let service of listService">
+    <app-card [service]="service"></app-card>
+  </div>
+</section>

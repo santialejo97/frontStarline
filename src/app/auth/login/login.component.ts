@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           Swal.fire({
             title: `Bienvenido a StartLink, ${value.usuario.fullname}`,
             icon: 'success',
-            timer: 2000,
+            timer: 4000,
           });
         }),
         delay(2000)

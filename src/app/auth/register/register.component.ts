@@ -33,7 +33,11 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.validPass = true;
-    delete this.formRegister.value().cofirmar;
+    const data = {
+      name: this.formRegister.get('name')?.value,
+      email: this.formRegister.get('email')?.value,
+      password: this.formRegister.get('password')?.value,
+    };
     this.authService
       .register(this.formRegister.value)
       .subscribe(this.createObsever());
@@ -42,9 +46,11 @@ export class RegisterComponent implements OnInit {
   createObsever(): Observer<any> {
     const observe: Observer<RegisterAuth> = {
       next: (value: RegisterAuth) => {
+        console.log(value);
         this.router.navigateByUrl('auth/login');
       },
       error: (err: HttpErrorResponse) => {
+        console.log(err);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

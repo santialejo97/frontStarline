@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { service } from 'src/app/interfaces/star.interface';
+import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
 
 @Component({
   selector: 'app-card',
@@ -7,8 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input('img') img: string = '';
+  @Input('service') service!: service;
+  public statusAuth!: boolean;
 
-  constructor() {}
+  constructor(private auth: AuthServiceService) {
+    this.statusAuth = auth.statusAuth;
+  }
 
   ngOnInit(): void {}
 }

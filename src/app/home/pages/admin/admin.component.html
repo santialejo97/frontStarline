@@ -1,1 +1,68 @@
-<p>admin works!</p>
+<div class="mt-5">
+  <div class="card">
+    <p-table
+      [value]="servicios"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [styleClass]="'p-datatable-ms'"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Hablitado</th>
+          <th>Acciones</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-service>
+        <tr>
+          <td
+            pTooltip="{{ service.id }}"
+            tooltipPosition="right"
+            tooltipStyleClass="tooltip"
+          >
+            {{ service.id | truncate : 7 }}
+          </td>
+          <td>{{ service.nameservice }}</td>
+          <td
+            pTooltip="{{ service.descripcion }}"
+            tooltipPosition="right"
+            tooltipStyleClass="tooltip"
+          >
+            {{ service.descripcion | truncate : 50 }}
+          </td>
+          <td class="text-center">
+            <i
+              *ngIf="service.isactive"
+              class="fa-solid fa-check fa-lg"
+              style="color: #168500"
+            ></i>
+            <i
+              *ngIf="!service.isactive"
+              class="fa-solid fa-xmark fa-lg"
+              style="color: #ae0404"
+            ></i>
+          </td>
+          <td>
+            <div class="d-flex">
+              <button
+                (click)="editar(service.id)"
+                type="button"
+                class="btn btn-primary mx-2"
+              >
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="delete(service.id)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

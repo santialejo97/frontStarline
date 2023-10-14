@@ -22,12 +22,17 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthServiceService {
   private _urlBase: string = environment.url;
+  private _statusAuth: boolean = false;
   public _headerSubject: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
   constructor(private http: HttpClient) {}
 
   gettoken(): string {
     return localStorage.getItem('token') || '';
+  }
+
+  get statusAuth(): boolean {
+    return this._statusAuth;
   }
 
   setHeaderSubject(header: boolean) {
@@ -48,6 +53,9 @@ export class AuthServiceService {
     return this.http.post<LoginAuth>(`${this._urlBase}/auth/login`, data).pipe(
       tap((data) => {
         this.setToken(data.token);
+        if (data.usuario.role == 'ADMIN') {
+          this._statusAuth = true;
+        }
       }),
       catchError((err) => throwError(() => err))
     );
