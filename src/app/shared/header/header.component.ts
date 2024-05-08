@@ -10,6 +10,7 @@ import { AuthServiceService } from 'src/app/services/auth/auth-service.service';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   public authHeader!: boolean;
+  public roleUser!: boolean;
   private headerSubscription!: Subscription;
   constructor(
     private authService: AuthServiceService,
@@ -17,15 +18,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.authService._roleSubject.subscribe((value) => {
+      this.roleUser = value;
+    });
     this.authService._headerSubject.subscribe((value) => {
       this.authHeader = value;
+      console.log(this.authHeader);
     });
   }
 
   routerHome() {
-    if (this.authHeader) {
-      this.router.navigateByUrl('startLink/home');
-    }
+    this.router.navigateByUrl('startLink/home');
   }
 
   logout() {

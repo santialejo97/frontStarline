@@ -12,7 +12,7 @@ export class FeatureComponent implements OnInit {
 
   constructor(private start: StartServiceService) {
     this.start.getListServices().subscribe((data) => {
-      this.listService = data;
+      this.listService = data.filter((item) => item.isactive === true);
     });
   }
 

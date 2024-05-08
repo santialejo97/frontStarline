@@ -1,66 +1,71 @@
-<div class="container d-flex justify-content-center align-items-center mt-5">
+<div class="container mt-5">
   <div class="row">
-    <div
-      class="col-lg-4 col-md-4 mt-5 text-center d-flex justify-content-center align-items-center"
-    >
-      <p>
-        Carrera: 8 a # 21 a 89 2 PISO - Mosquera - Cundinamarca Email:
-        dataredestelecomunicaciones@gmail.com Teléfono: 3107759189.
-      </p>
-    </div>
-    <div class="col-lg-8 col-md-8">
+    <div class="col-lg-12 col-md-12">
       <div class="Contactanos mt-5">
-        <h2 class="text-center mb-4">Contact</h2>
+        <h2 class="text-center mb-4 uppercase text-3xl font-extrabold">
+          Contact
+        </h2>
 
-        <form class="formulario mb-3">
+        <form class="formulario mb-3" [formGroup]="formContact">
           <div class="d-lg-flex">
             <div class="flex-fill me-2">
               <div class="mb-3">
-                <label for="email" class="form-label">Email </label>
+                <label for="email" class="form-label">Email</label>
                 <input
                   type="email"
                   class="form-control"
                   id="email"
-                  placeholder="insert Email"
+                  formControlName="email"
+                  placeholder="ingrese su Email"
                 />
               </div>
               <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label">Nombre</label>
                 <input
                   type="text"
                   class="form-control"
                   id="name"
-                  placeholder="Insert Name"
+                  formControlName="name"
+                  placeholder="Ingrese su nombre completo"
                 />
               </div>
               <div class="mb-3">
-                <label for="event" class="form-label">Event</label>
+                <label for="phone" class="form-label">Telefono</label>
                 <input
-                  type="text"
+                  type="tel"
                   class="form-control"
-                  id="event"
-                  placeholder="Insert Event"
+                  id="phone"
+                  formControlName="phone"
+                  placeholder="Ingrese el numero de contacto"
                 />
               </div>
             </div>
             <div class="mb-3 flex-fill">
-              <label for="description" class="form-label">Description</label>
+              <label for="description" class="form-label">Descripción</label>
               <textarea
                 name="description"
                 id="description"
                 cols="30"
                 rows="10"
                 class="form-control"
-                placeholder="Insert Description"
+                formControlName="description"
+                placeholder="Una descripcion detallada por favor."
               ></textarea>
             </div>
           </div>
 
           <div class="d-grid gap-2">
-            <button class="button-login">Send</button>
+            <button class="button-login" (click)="createContact()">Send</button>
           </div>
         </form>
       </div>
+    </div>
+
+    <div class="col-lg-12 col-md-12 mt-5 text-center">
+      <p>
+        Carrera: 8 a # 21 a 89 2 PISO - Mosquera - Cundinamarca Email:
+        dataredestelecomunicaciones@gmail.com Teléfono: 3107759189.
+      </p>
     </div>
   </div>
 </div>

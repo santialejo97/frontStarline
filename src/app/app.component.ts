@@ -9,8 +9,17 @@ import { AuthServiceService } from './services/auth/auth-service.service';
 export class AppComponent {
   constructor(private authService: AuthServiceService) {
     const headerAuth = localStorage.getItem('header') || '';
-    const value = JSON.parse(headerAuth);
-    this.authService._headerSubject.next(value);
+    const roleAuth = localStorage.getItem('role') || '';
+    console.log(headerAuth);
+    if (headerAuth != '') {
+      const value = JSON.parse(headerAuth);
+      this.authService._headerSubject.next(value);
+    }
+    if (roleAuth != '') {
+      const valueRole = JSON.parse(roleAuth);
+      this.authService._roleSubject.next(valueRole);
+    }
   }
+
   title = 'frontend';
 }

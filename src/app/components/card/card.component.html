@@ -1,11 +1,18 @@
-<div class="card" style="width: 18rem">
+<div class="card bg-slate-400 shadow-lg text-white w-auto h-full">
   <img src="..." class="card-img-top" alt="..." *ngIf="this.img !== ''" />
-  <div class="card-body">
-    <h5 class="card-title">{{ service.nameservice }}</h5>
-    <p class="card-text">
+  <div class="card-body p-6 m-6">
+    <h5 class="card-title text-center font-semibold">
+      {{ service.nameservice }}
+    </h5>
+    <hr />
+    <p class="card-text leading-4 text-sm text-justify mt-4 mb-4">
       {{ service.descripcion }}
     </p>
+    <hr />
 
-    <button *ngIf="this.statusAuth">Editar</button>
+    <div class="mt-2 uppercase text-center font-extrabold">
+      <h4>Precio</h4>
+      <p>{{ service.precio | currency : "COL " }}</p>
+    </div>
   </div>
 </div>

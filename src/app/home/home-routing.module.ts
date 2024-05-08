@@ -5,6 +5,7 @@ import { FeatureComponent } from './pages/feature/feature.component';
 import { AboutUsComponent } from './pages/service/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AuthorizerGuard } from '../guards/authorizer.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
   {
     path: 'service/:id',
     component: AboutUsComponent,
+    canActivate: [AuthorizerGuard],
   },
   {
     path: 'contact',

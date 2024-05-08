@@ -12,9 +12,7 @@ export class CardComponent implements OnInit {
   @Input('service') service!: service;
   public statusAuth!: boolean;
 
-  constructor(private auth: AuthServiceService) {
-    this.statusAuth = auth.statusAuth;
-  }
+  constructor(private auth: AuthServiceService) {}
 
   ngOnInit(): void {}
 }

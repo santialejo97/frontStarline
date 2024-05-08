@@ -22,22 +22,30 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthServiceService {
   private _urlBase: string = environment.url;
-  private _statusAuth: boolean = false;
+  private _statusAuth!: string;
   public _headerSubject: BehaviorSubject<boolean> =
     new BehaviorSubject<boolean>(false);
+  public _roleSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
   constructor(private http: HttpClient) {}
 
   gettoken(): string {
     return localStorage.getItem('token') || '';
   }
 
-  get statusAuth(): boolean {
+  getStatusAuth(): string {
     return this._statusAuth;
   }
 
   setHeaderSubject(header: boolean) {
     this._headerSubject.next(header);
     localStorage.setItem('header', JSON.stringify(header));
+  }
+
+  setRoleSubject(role: boolean) {
+    this._roleSubject.next(role);
+    localStorage.setItem('role', JSON.stringify(role));
   }
 
   getHeaders() {
@@ -52,9 +60,12 @@ export class AuthServiceService {
   login(data: { email: string; password: string }): Observable<LoginAuth> {
     return this.http.post<LoginAuth>(`${this._urlBase}/auth/login`, data).pipe(
       tap((data) => {
+        console.log(data);
         this.setToken(data.token);
-        if (data.usuario.role == 'ADMIN') {
-          this._statusAuth = true;
+        if (data.usuario.role === 'ADMIN') {
+          this.setRoleSubject(true);
+        } else {
+          this.setRoleSubject(false);
         }
       }),
       catchError((err) => throwError(() => err))
@@ -72,6 +83,7 @@ export class AuthServiceService {
   logout() {
     localStorage.removeItem('token');
     this.setHeaderSubject(false);
+    this.setRoleSubject(false);
   }
 
   validToken(): Observable<boolean> {
